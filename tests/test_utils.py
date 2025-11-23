@@ -14,6 +14,8 @@ import pytest
 
 from i18n_check.check.invalid_keys import map_keys_to_files
 from i18n_check.utils import (
+    _collect_files_to_check_cached,
+    _get_all_json_files_cached,
     collect_files_to_check,
     filter_valid_key_parts,
     get_all_json_files,
@@ -293,6 +295,97 @@ def test_get_config_file_path_neither_exists(tmp_path) -> None:
         result = get_config_file_path()
         assert result.name == ".i18n-check.yaml"
         assert not result.is_file()
+
+
+def test_read_files_to_dict_empty_file_list_returns_empty_dict():
+    """
+    When given an empty list of file paths, read_files_to_dict should return an empty dict.
+    """
+    assert read_files_to_dict([]) == {}
+
+
+def test_lower_and_remove_punctuation_non_string_is_returned_unchanged():
+    """
+    With non-string input, lower_and_remove_punctuation returns the input unchanged.
+    """
+    assert lower_and_remove_punctuation(123) == 123
+    sample_list = ["A", "B."]
+    assert lower_and_remove_punctuation(sample_list) == sample_list
+
+
+def test_path_to_valid_key_handles_hyphen():
+    """
+    Verify that when there is hyphen, path_to_valid_key replaces it with underscore and handles rest of the path correctly too.
+    """
+    input_path = os.path.join("folder-name", "FileName")
+    assert path_to_valid_key(input_path) == "folder_name.file_name"
+
+
+def test_get_all_json_files_cache_behavior(tmp_path):
+    """
+    Verify get_all_json_files uses cache and returns cached results until the cache is cleared.
+    """
+    # Create first JSON file and call the function for the first time.
+    file1 = tmp_path / "file1.json"
+    file1.write_text("file1", encoding="utf-8")
+    result1 = get_all_json_files(directory=tmp_path)
+    assert str(file1.resolve()) in result1
+
+    # Create second JSON file after the first call and call again.
+    file2 = tmp_path / "file2.json"
+    file2.write_text("file2", encoding="utf-8")
+    result2 = get_all_json_files(directory=tmp_path)
+    assert str(file1.resolve()) in result2
+    # Result should not include the second JSON file, because of caching.
+    assert str(file2.resolve()) not in result2
+
+    # Clear cache of internal function and call again.
+    _get_all_json_files_cached.cache_clear()
+    result3 = get_all_json_files(directory=tmp_path)
+    assert str(file1.resolve()) in result3
+    # Now result should include the second JSON file.
+    assert str(file2.resolve()) in result3
+
+
+def test_collect_files_to_check_cache_behavior(tmp_path):
+    """
+    Verify collect_files_to_check uses cache and returns cached results until the cache is cleared.
+    """
+    # Create first file and call the function for the first time.
+    file1 = tmp_path / "file1.ts"
+    file1.write_text("file1", encoding="utf-8")
+    result1 = collect_files_to_check(
+        directory=tmp_path,
+        file_types_to_check=[".ts"],
+        directories_to_skip=[],
+        files_to_skip=[],
+    )
+    assert str(file1.resolve()) in result1
+
+    # Create second file after the first call and call again.
+    file2 = tmp_path / "file2.ts"
+    file2.write_text("file2", encoding="utf-8")
+    result2 = collect_files_to_check(
+        directory=tmp_path,
+        file_types_to_check=[".ts"],
+        directories_to_skip=[],
+        files_to_skip=[],
+    )
+    assert str(file1.resolve()) in result2
+    # Result should not include the second file, because of caching.
+    assert str(file2.resolve()) not in result2
+
+    # Clear cache of internal function and call again.
+    _collect_files_to_check_cached.cache_clear()
+    result3 = collect_files_to_check(
+        directory=tmp_path,
+        file_types_to_check=[".ts"],
+        directories_to_skip=[],
+        files_to_skip=[],
+    )
+    assert str(file1.resolve()) in result3
+    # Now result should include the second file.
+    assert str(file2.resolve()) in result3
 
 
 if __name__ == "__main__":
