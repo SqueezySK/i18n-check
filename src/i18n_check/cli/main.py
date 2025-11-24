@@ -91,8 +91,7 @@ def main() -> None:
     parser.add_argument(
         "-v",
         "--version",
-        action="version",
-        version=f"{get_version_message()}",
+        action="store_true",
         help="Show the version of the i18n-check CLI.",
     )
 
@@ -218,6 +217,10 @@ def main() -> None:
     # MARK: Setup CLI
 
     args = parser.parse_args()
+
+    if args.version:
+        print(get_version_message())
+        sys.exit(0)
 
     if args.upgrade:
         upgrade_cli()
