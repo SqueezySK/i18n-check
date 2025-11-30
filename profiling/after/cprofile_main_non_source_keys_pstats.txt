@@ -1,0 +1,45 @@
+Tue Nov 25 10:39:11 2025    profiling/after/cprofile_main_non_source_keys.prof
+
+         17752 function calls (17120 primitive calls) in 0.022 seconds
+
+   Ordered by: cumulative time
+   List reduced from 568 to 15 due to restriction <15>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.022    0.022 C:\Users\Tomi\Documents\i18n-check\src\i18n_check\cli\main.py:40(main)
+        1    0.000    0.000    0.019    0.019 C:\Users\Tomi\Documents\i18n-check\src\i18n_check\check\non_source_keys.py:76(non_source_keys_check)
+        1    0.000    0.000    0.019    0.019 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\__init__.py:53(print)
+        1    0.000    0.000    0.012    0.012 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\__init__.py:23(get_console)
+        1    0.000    0.000    0.012    0.012 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\console.py:625(__init__)
+        1    0.000    0.000    0.011    0.011 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\console.py:582(detect_legacy_windows)
+        2    0.000    0.000    0.011    0.006 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\console.py:572(get_windows_console_features)
+      8/3    0.000    0.000    0.011    0.004 <frozen importlib._bootstrap>:1349(_find_and_load)
+      6/1    0.000    0.000    0.011    0.011 <frozen importlib._bootstrap>:1304(_find_and_load_unlocked)
+      6/1    0.000    0.000    0.010    0.010 <frozen importlib._bootstrap>:911(_load_unlocked)
+      5/1    0.000    0.000    0.010    0.010 <frozen importlib._bootstrap_external>:989(exec_module)
+     14/2    0.000    0.000    0.010    0.005 <frozen importlib._bootstrap>:480(_call_with_frames_removed)
+      8/1    0.000    0.000    0.010    0.010 {built-in method builtins.exec}
+        1    0.000    0.000    0.010    0.010 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\_windows.py:1(<module>)
+        1    0.000    0.000    0.007    0.007 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\rich\console.py:1648(print)
+
+
+Tue Nov 25 10:39:11 2025    profiling/after/cprofile_main_non_source_keys.prof
+
+         17752 function calls (17120 primitive calls) in 0.022 seconds
+
+   Ordered by: internal time
+   List reduced from 568 to 10 due to restriction <10>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003    0.003    0.003 {built-in method _imp.create_dynamic}
+        5    0.002    0.000    0.002    0.000 {built-in method _io.open_code}
+    82/24    0.001    0.000    0.003    0.000 C:\Users\Tomi\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:512(_parse)
+       21    0.001    0.000    0.001    0.000 {built-in method nt.get_terminal_size}
+       53    0.001    0.000    0.001    0.000 {built-in method builtins.__build_class__}
+    157/9    0.001    0.000    0.002    0.000 C:\Users\Tomi\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:37(_compile)
+       24    0.001    0.000    0.001    0.000 {built-in method nt.stat}
+        5    0.001    0.000    0.001    0.000 {built-in method marshal.loads}
+        1    0.001    0.001    0.001    0.001 {built-in method sys.getwindowsversion}
+     1068    0.000    0.000    0.001    0.000 C:\Users\Tomi\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:168(__getitem__)
+
+

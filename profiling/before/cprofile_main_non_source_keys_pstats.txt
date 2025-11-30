@@ -1,0 +1,45 @@
+Tue Nov 25 10:38:41 2025    profiling/before/cprofile_main_non_source_keys.prof
+
+         28012 function calls (27297 primitive calls) in 0.800 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1111 to 15 due to restriction <15>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.800    0.800 C:\Users\Tomi\Documents\i18n-check\src\i18n_check\cli\main.py:40(main)
+        1    0.001    0.001    0.771    0.771 C:\Users\Tomi\Documents\i18n-check\src\i18n_check\cli\version.py:54(get_version_message)
+        1    0.000    0.000    0.765    0.765 C:\Users\Tomi\Documents\i18n-check\src\i18n_check\cli\version.py:33(get_latest_version)
+        1    0.000    0.000    0.765    0.765 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\requests\api.py:62(get)
+        1    0.000    0.000    0.765    0.765 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\requests\api.py:14(request)
+        1    0.000    0.000    0.764    0.764 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\requests\sessions.py:500(request)
+        1    0.000    0.000    0.761    0.761 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\requests\sessions.py:673(send)
+        1    0.000    0.000    0.760    0.760 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\requests\adapters.py:590(send)
+        1    0.000    0.000    0.759    0.759 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\connectionpool.py:592(urlopen)
+        1    0.000    0.000    0.759    0.759 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\connectionpool.py:377(_make_request)
+        1    0.000    0.000    0.563    0.563 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\connectionpool.py:1085(_validate_conn)
+        1    0.000    0.000    0.563    0.563 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\connection.py:718(connect)
+        1    0.000    0.000    0.486    0.486 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\connection.py:895(_ssl_wrap_socket_and_match_hostname)
+        1    0.000    0.000    0.484    0.484 C:\Users\Tomi\Documents\i18n-check\venv\Lib\site-packages\urllib3\util\ssl_.py:410(ssl_wrap_socket)
+        1    0.435    0.435    0.435    0.435 {method 'load_verify_locations' of '_ssl._SSLContext' objects}
+
+
+Tue Nov 25 10:38:41 2025    profiling/before/cprofile_main_non_source_keys.prof
+
+         28012 function calls (27297 primitive calls) in 0.800 seconds
+
+   Ordered by: internal time
+   List reduced from 1111 to 10 due to restriction <10>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.435    0.435    0.435    0.435 {method 'load_verify_locations' of '_ssl._SSLContext' objects}
+        2    0.194    0.097    0.194    0.097 {method 'read' of '_ssl._SSLSocket' objects}
+        1    0.054    0.054    0.054    0.054 {method 'connect' of '_socket.socket' objects}
+        1    0.049    0.049    0.049    0.049 {method 'do_handshake' of '_ssl._SSLSocket' objects}
+        1    0.023    0.023    0.023    0.023 {built-in method _socket.getaddrinfo}
+        6    0.004    0.001    0.004    0.001 {built-in method _io.open_code}
+        1    0.003    0.003    0.003    0.003 {built-in method _imp.create_dynamic}
+       21    0.002    0.000    0.002    0.000 {built-in method nt.get_terminal_size}
+      130    0.002    0.000    0.002    0.000 {built-in method __new__ of type object at 0x00007FFC76B458F0}
+    83/25    0.001    0.000    0.003    0.000 C:\Users\Tomi\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:512(_parse)
+
+
